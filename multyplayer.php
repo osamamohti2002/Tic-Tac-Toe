@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>multyplayer</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+
+<div class="navbar">
+    <h3 style="color: white;">Welkom bij ons speeltje, selecteer een vierkant om te beginnen</h3>
+    <br>
+</div>
+<div class="page">
+    <div class="main">
+        <p class="heading">
+            <?php
+            session_start();
+            if (isset($_SESSION['user'])){
+                echo $_SESSION['user']->gebruikersnaam;
+                echo "<form><button type='submit' name='loguit'>uitloggen</button></form>";
+            }
+            if (isset($_GET['loguit'])) {
+                session_unset();
+                session_destroy();
+                header("location:http://localhost/project-3/inloggen-1.php");
+            }
+
+            ?>
+        </p>
+        <p class="heading" id="wins"></p>
+        <p class="heading" id="numOfWins"></p>
+
+    </div>
+    <div id="grid" class="container">
+        <div  onclick="startGame(this.id)" class="box fade-in" id="b1"></div>
+        <div  onclick="startGame(this.id)" class="box" id="b2"></div>
+        <div  onclick="startGame(this.id)" class="box" id="b3"></div>
+
+        <div  onclick="startGame(this.id)" class="box" id="b4"></div>
+        <div  onclick="startGame(this.id)" class="box" id="b5"></div>
+        <div  onclick="startGame(this.id)" class="box" id="b6"></div>
+
+        <div  onclick="startGame(this.id)" class="box" id="b7"></div>
+        <div  onclick="startGame(this.id)" class="box" id="b8"></div>
+        <div  onclick="startGame(this.id)" class="box" id="b9"></div>
+    </div>
+    <div class="sidebarright">
+        <p class="heading">O</p>
+        <p class="heading" id="aiwins"></p>
+        <p class="heading" id="numOfAiWins"></p>
+    </div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
